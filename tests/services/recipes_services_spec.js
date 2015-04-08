@@ -18,17 +18,17 @@ describe("RecipesService", function() {
   });
 
   it("should get all recipes", function() {
-    $httpBackend.expectGET("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[0]).
+    $httpBackend.expectJSONP("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[0] + "&callback=JSON_CALLBACK").
       respond({});
-    $httpBackend.expectGET("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[1]).
+    $httpBackend.expectJSONP("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[1] + "&callback=JSON_CALLBACK").
       respond({});
-    $httpBackend.expectGET("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[2]).
+    $httpBackend.expectJSONP("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[2] + "&callback=JSON_CALLBACK").
       respond({});
-    $httpBackend.expectGET("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[3]).
+    $httpBackend.expectJSONP("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[3] + "&callback=JSON_CALLBACK").
       respond({});
-    $httpBackend.expectGET("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[4]).
+    $httpBackend.expectJSONP("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[4] + "&callback=JSON_CALLBACK").
       respond({});
-    $httpBackend.expectGET("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[5]).
+    $httpBackend.expectJSONP("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[5] + "&callback=JSON_CALLBACK").
       respond({});
     
     RecipesService.getRecipes().then(function(data) {
@@ -41,7 +41,7 @@ describe("RecipesService", function() {
 
   it("should get a single recipe", function() {
     var id = ids[0];
-    $httpBackend.expectGET("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[0]).
+    $httpBackend.expectJSONP("https://api.forage.co/v1/recipe/view?recipe_id=" + ids[0] + "&callback=JSON_CALLBACK").
       respond({success: true});
     
     RecipesService.getRecipe(id).then(function(data) {
