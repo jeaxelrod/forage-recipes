@@ -14,3 +14,7 @@ recipeApp.config(['$stateProvider', '$urlRouterProvider',
     $urlRouterProvider.otherwise('/');
   }
 ]);
+
+recipeApp.config(function(RestangularProvider) {
+  RestangularProvider.setDefaultRequestParams('jsonp', {callback: 'JSON_CALLBACK'});
+});

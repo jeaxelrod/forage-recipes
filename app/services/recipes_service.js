@@ -4,6 +4,7 @@ var app = angular.module("recipeApp");
 
 app.factory("RecipesService", ['$q', 'Restangular',
   function($q, Restangular) {
+    Restangular.setJsonp(true);
     var ids = [109121, 109131, 109141, 108241, 108781, 108651];
     function getRecipe(id) {
       return Restangular.oneUrl('recipes', 'https://api.forage.co/v1/recipe/view?recipe_id=' + id).get();
@@ -12,17 +13,20 @@ app.factory("RecipesService", ['$q', 'Restangular',
     return {
       getRecipe: getRecipe,
       getRecipes: function() {
-        var data = [],
+        var data =     [],
+            promises = [],
             deferred = $q.defer();
-        for (var i=0, ii=ids.length; i<ii; i++) {
+        for (var i=0; i<ids.length; i++) {
           var id = ids[i];
-          getRecipe(id).then(function(response) {
+          var promises = getRecipe(id).then(function(response) {
             data.push(response);
-          }, function(response) {
-            deferred.reject("Failed to retrieve all recipes");
           });
         }
-        deferred.resolve(data);
+        $q.all(promises).then(function() {
+          deferred.resolve(data);
+        }, function() {
+          deferred.reject("Unable to get all recipes");
+        });
         return deferred.promise;
       },
       getIds: function() {
