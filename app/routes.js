@@ -6,7 +6,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
     $stateProvider
       .state('index', {
         url: '/',
-        templateUrl: "partials/index.html",
+        templateUrl: "app/partials/index.html",
         controller: "IndexController"
       })
     $urlRouterProvider.otherwise('/');
