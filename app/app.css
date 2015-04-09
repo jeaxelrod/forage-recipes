@@ -17,3 +17,22 @@
   margin-top: 0;
   font-size: 25px;
 }
+.ingredients-list {
+  list-style: none;
+  padding: 0;
+}
+.items {
+  margin: 5px 0;
+}
+.items p {
+  margin: 0;
+  display: inline-block;
+}
+.items h4 {
+  margin: 0;
+  display: inline-block;
+  font-weight: normal;
+}
+.btn-recipe {
+  margin: 10px auto;
+}

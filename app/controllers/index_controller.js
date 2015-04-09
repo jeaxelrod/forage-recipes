@@ -2,11 +2,10 @@
 
 var app = angular.module("recipeApp");
 
-app.controller("IndexController", ['$scope', 'RecipesService', '$http',
-  function($scope, RecipesService, $http) {
+app.controller("IndexController", ['$scope', 'RecipesService',
+  function($scope, RecipesService) {
     RecipesService.getRecipes().then(function(response) {
       $scope.recipes = response; 
-      console.log(response);
     });
   }
 ]);

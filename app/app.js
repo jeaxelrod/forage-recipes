@@ -11,6 +11,11 @@ recipeApp.config(['$stateProvider', '$urlRouterProvider',
         templateUrl: "partials/index.html",
         controller: "IndexController"
       })
+      .state('recipe', {
+        url: '/recipe/:id',
+        templateUrl: "partials/recipe.html",
+        controller: "RecipeController"
+      });
     $urlRouterProvider.otherwise('/');
   }
 ]);
