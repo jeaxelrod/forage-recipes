@@ -70,4 +70,7 @@
   padding-top: 10px;
   margin-bottom: 0px;
 }
+#timer {
+  clear: both;
+}
 

@@ -31,7 +31,10 @@ app.directive("timer", ['$interval', function($interval) {
     function updateTime() {
       if (scope.seconds > 0) {
         scope.seconds = baseTime - parseInt((Date.now() - offset)/1000);
+        document.getElementById("timer").innerHTML = "";
+
       }
+      document.getElementById("timer").innerHTML = "<p>Timer: " +scope.seconds + "</p>";
     };
 
     element.on('$destroy', function() {
